@@ -19,6 +19,7 @@ include 'author-archive-extended.php';
 ```
 
 **Adding pages**
+
 You can add the extra pages with the `author-archive-extended.php` filter.
 
 ```php
