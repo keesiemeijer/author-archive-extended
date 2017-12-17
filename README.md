@@ -6,7 +6,7 @@ Tested up to:      4.9
 
 Add extra author pages to your WordPress author archive page.
 
-The default permalink for author archives is `/author/author-name`. This script let's you extend this permalink with extra author pages. For example, `/author/author-name/recipes`.
+The default WordPress permalink for author archives is `/author/author-name`. This script let's you extend this permalink with extra author pages. For example, `/author/author-name/location`.
 
 ## Installation
 Include the file `author-archive-extended.php` in your project (plugin/theme) and add the extra pages with the `author_archive_extended_pages` filter.
@@ -18,7 +18,7 @@ Include the file `author-archive-extended.php` in your project (plugin/theme) an
 include 'author-archive-extended.php';
 ```
 
-## Adding pages
+**Adding pages**
 You can add the extra pages with the `author-archive-extended.php` filter.
 
 ```php
@@ -26,8 +26,8 @@ You can add the extra pages with the `author-archive-extended.php` filter.
 add_filter( 'author_archive_extended_pages', 'my_add_extended_author_pages');
 
 function my_add_extended_author_pages( $pages ) {
-	$pages[] = 'recipes';
 	$pages[] = 'location';
+	$pages[] = 'recipes';
 
 	return $pages;
 }
@@ -51,7 +51,7 @@ function my_author_archive_pages_queries( $query ) {
 	/*
 	 * Bail early if:
 	 *     It's a query in the wp-admin
-	 *     Or it's not the main query for an author archive page
+	 *     It's not the main query for an author archive page
 	 */
 	if ( is_admin() || ! ( $query->is_main_query() && is_author() ) ) {
 		return;
